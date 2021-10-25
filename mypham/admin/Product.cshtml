@@ -1,0 +1,300 @@
+﻿@model AddProductViewModel
+<div id="page-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Product</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <button type="button"
+                                    class="btn_add"
+                                    data-toggle="modal"
+                                    data-target="#myModal">
+                                &#43; Add New
+                            </button>
+
+                            
+                                <div class="modal fade" id="myModal" role="dialog">
+                                    <div class="modal-dialog">
+                                        <!-- Modal content-->
+                                        <form enctype="multipart/form-data" asp-action="AddNew">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button"
+                                                            class="close"
+                                                            data-dismiss="modal">
+                                                        &times;
+                                                    </button>
+                                                    <h4 class="modal-title">Add Product</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="row">
+                                                        <div class="col-md-10 offset-md-2">
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.Name" class="control-label"></label>
+                                                                <input asp-for="@Model.Name" class="form-control" />
+                                                                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.CategoryName" class="control-label"></label>
+                                                                <input asp-for="@Model.CategoryName" class="form-control" />
+                                                                <span asp-validation-for="@Model.CategoryName" class="text-danger"></span>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.Price" class="control-label"></label>
+                                                                <input asp-for="@Model.Price" class="form-control" />
+                                                                <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.Description" class="control-label"></label>
+                                                                <input asp-for="@Model.Description" class="form-control" />
+                                                                <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.Quantity" class="control-label"></label>
+                                                                <input asp-for="@Model.Quantity" class="form-control" />
+                                                                <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label asp-for="@Model.ProductFirstImage" class="control-label">Choose Image</label>
+
+                                                                <div class="custom-file">
+                                                                    <input asp-for="@Model.ProductFirstImage" class="custom-file-input"  id="customFile" />
+                                                                    <label class="custom-file-label" for="customFile">Choose File...</label>
+                                                                </div>
+                                                                <span asp-validation-for="@Model.ProductFirstImage" class="text-danger"></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @*<div class="form_group addImg">
+                                                        <label class="label_add" for="productImg">
+                                                            Image
+                                                            <span class="redStar">*</span>
+                                                        </label>
+                                                        <input type="file"
+                                                               class="up_image"
+                                                               id="productImg" />
+                                                    </div>
+                                                    <div class="form_group">
+                                                        <label class="label_add" for="productName">
+                                                            Name
+                                                            <span class="redStar">*</span>
+                                                        </label>
+                                                        <input type="text"
+                                                               placeholder="Men's Cotton Coat'"
+                                                               id="productName"
+                                                               class="addInput" />
+                                                    </div>
+                                                    <div class="form_group">
+                                                        <label class="label_add" for="productType">Category<span class="redStar">*</span></label>
+                                                        <input type="text"
+                                                               placeholder="T-Shirt"
+                                                               id="productType"
+                                                               class="addInput" />
+                                                    </div>
+                                                    <div class="form_group">
+                                                        <label class="label_add" for="productPrice">Price <span class="redStar">*</span></label>
+                                                        <input type="text"
+                                                               placeholder="$109"
+                                                               id="productPrice"
+                                                               class="addInput" />
+                                                    </div>
+                                                    <div class="form_group">
+                                                        <label class="label_add" for="productDes">
+                                                            Description
+                                                            <span class="redStar">*</span>
+                                                        </label>
+                                                        <input type="text"
+                                                               placeholder="100% cotton, highly comfortable"
+                                                               id="productDes"
+                                                               class="addInput" />
+                                                    </div>
+                                                    <div class="form_group">
+                                                        <label class="label_add" for="productSta">Quantity <span class="redStar">*</span></label>
+                                                        <input type="text"
+                                                               placeholder="12"
+                                                               id="productSta"
+                                                               class="addInput" />
+                                                    </div>*@
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <input type="submit" value="submit" class="btn btn-sm btn-primary text-uppercase addPD" />
+                                                    <button type="button"
+                                                            class="btn btn-default"
+                                                            data-dismiss="modal">
+                                                        Close
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            
+
+                            <table class="table table-striped table-bordered table-hover"
+                                   id="dataTables-example">
+                                <thead>
+                                    <tr>
+                                        <th>Index</th>
+                                        <th>Name</th>
+                                        <th>Image</th>
+                                        <th>Category</th>
+                                        <th>Price</th>
+                                        <th>Description</th>
+                                        <th>Quantity</th>
+                                        <th>Edit</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{ var i = 1;}
+                                    @foreach (var product in Model.Products)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td>@(i++)</td>
+                                            <td>@product.Name</td>
+                                            <td>
+                                                <img class="image_products center"
+                                                     src="~/assets/img/product/@product.ProductFirstImage" style="width: 200px;" />
+                                            </td>
+                                            <td>@product.Category.ProductCategory</td>
+                                            <td class="center">$@product.Price</td>
+                                            <td class="center">
+                                                <p>
+                                                    @product.ShortDescription
+                                                </p>
+                                            </td>
+                                            <td class="center">@product.Quantity</td>
+                                            <td class="center">
+                                                <a type="button"
+                                                   data-toggle="modal"
+                                                   data-target="#myModalEdit">
+                                                    <i class="fa fa-pencil-square-o"
+                                                       style="
+                                  font-size: 35px;
+                                  color: #337ab7;
+                                  padding: 30px 30px;
+                                "></i>
+                                                </a>
+                                                
+                                                    <div class="modal fade"
+                                                         id="myModalEdit"
+                                                         role="dialog">
+                                                        <div class="modal-dialog">
+                                                            <!-- Modal content-->
+                                                            <form enctype="multipart/form-data" asp-action="Edit" asp-route-productId="@product.Id">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <button type="button"
+                                                                                class="close"
+                                                                                data-dismiss="modal">
+                                                                            &times;
+                                                                        </button>
+                                                                        <h4 class="modal-title">Add Product</h4>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <div class="row">
+                                                                            <div class="col-md-10 offset-md-2">
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.Name" class="control-label"></label>
+                                                                                    <input asp-for="@Model.Name" class="form-control" />
+                                                                                    <span asp-validation-for="@Model.Name" class="text-danger"></span>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.CategoryName" class="control-label"></label>
+                                                                                    <input asp-for="@Model.CategoryName" class="form-control" />
+                                                                                    <span asp-validation-for="@Model.CategoryName" class="text-danger"></span>
+                                                                                </div>
+
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.Price" class="control-label"></label>
+                                                                                    <input asp-for="@Model.Price" class="form-control" />
+                                                                                    <span asp-validation-for="@Model.Price" class="text-danger"></span>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.Description" class="control-label"></label>
+                                                                                    <input asp-for="@Model.Description" class="form-control" />
+                                                                                    <span asp-validation-for="@Model.Description" class="text-danger"></span>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.Quantity" class="control-label"></label>
+                                                                                    <input asp-for="@Model.Quantity" class="form-control" />
+                                                                                    <span asp-validation-for="@Model.Quantity" class="text-danger"></span>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label asp-for="@Model.ProductFirstImage" class="control-label">Choose Image</label>
+
+                                                                                    <div class="custom-file">
+                                                                                        <input asp-for="@Model.ProductFirstImage" class="custom-file-input" id="customFile" />
+                                                                                        <label class="custom-file-label" for="customFile">Choose File...</label>
+                                                                                    </div>
+                                                                                    <span asp-validation-for="@Model.ProductFirstImage" class="text-danger"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                       
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <input type="submit" value="submit" class="btn btn-sm btn-primary text-uppercase addPD" />
+                                                                        <button type="button"
+                                                                                class="btn btn-default"
+                                                                                data-dismiss="modal">
+                                                                            Close
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                
+                                            </td>
+                                            <td class="center">
+                                                <a asp-action="Delete" asp-route-id="@product.Id" type="button">
+                                                    <i class="fa fa-trash"
+                                                       aria-hidden="true"
+                                                       style="
+                                  font-size: 35px;
+                                  color: #ff4747;/assets/img/product/
+                                  padding: 30px 30px;
+                                "></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                        @{
+                            var prevDisabled = !Model.Products.HasPreviousPage ? "disabled" : "";
+                            var nextDisabled = !Model.Products.HasNextPage ? "disabled" : "";
+
+                        }
+                       
+                               <a asp-action="Product" asp-route-pageNumber="@(Model.Products.PageIndex - 1)" class="@prevDisabled">« Previous</a>
+                                @*<li class="current_number">1</li>
+                <li><a href="#">2</a></li>*@
+                                <a asp-action="Product" asp-route-pageNumber="@(Model.Products.PageIndex + 1)" class="@nextDisabled">Next »</a>
+                            
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.panel-body -->
+                </div>
+                <!-- /.panel -->
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>

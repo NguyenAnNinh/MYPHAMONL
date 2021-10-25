@@ -1,0 +1,124 @@
+		<script type="text/javascript">
+		$(document).ready(function () {
+		    $('#dataTables-category').dataTable({
+		    	"processing": true,
+		        "serverSide": false,
+		        "pageLength": 15,
+		      "ajax" :{
+		        "url" : '/admin/manage/category/get/list',
+		        "type" : 'get',
+		        "datatype" : 'json',
+		        "contentType" : "application/json; charset=utf-8",
+		        "dataSrc" :""
+		      },
+		     
+		      "columns" : [ {
+		        "data" : "id","width":"10%"
+		      },{
+		        "data" : "name", "width":"80%"
+		      }
+		      ,
+				        {
+				        	"data": "id",
+				        	render :function (data){
+				        		return "<button class='btn btn-danger'  onclick='deleteBanner("+data+")' >Xóa</button>"
+				        	}
+				        },
+				        
+		      ],
+		     
+		    })
+		  })
+		</script>
+		
+<script type="text/javascript">
+function deleteCategory(data){
+	 if (confirm("Bạn muốn xóa banner!")) {
+		  ajaxDelete(data);
+		  } else {
+		   
+		  }	
+	function  ajaxDelete(data){
+		$.ajax({
+			url: "/admin/manage/category/delete",
+			type:"get",
+			data :{
+				id:data,
+			},
+				success: function (response){	
+			if(data){
+				alert("Bạn đã xóa  thành công");
+				$('#dataTables-banner').DataTable().ajax.reload();
+			}else {
+				alert("Không xóa được lỗi quá trình xử lý");
+			}
+			}
+			,
+		})
+	}
+}
+</script>
+<script type="text/javascript">
+	function  editBanner(id){
+		if(confirm("Bạn muốn kích hoạt tài khoản?")){
+			$.ajax({
+				url: "/admin/manage/banner/edit",
+				type:"get",
+				data:{
+					id : id },
+					success: function (response,type){
+				if(response){
+					$('#myModal').modal('show');
+				}else {
+					alert("Không kích hoạt được lỗi quá trình xử lý");
+				}
+				},
+			})
+		}
+	}
+</script>
+<script type="text/javascript">
+$(document).ready(function (){
+	$('#banner').submit(function (event){
+		event.preventDefault();
+		ajaxBanner();
+	})
+	function  ajaxBanner(){ 
+		var form = $('#banner')[0];
+		var data = new FormData(form);
+	var idCategory=$('#category').val();
+		$.ajax({
+			url: "/admin/manage/banner/add",
+	        type: "POST",
+	        enctype: 'multipart/form-data',
+	        data: data, 
+	        processData: false,
+	        contentType: false,
+		success :function (data){
+			if(data){
+				alert("Bạn đã them banner thành công");
+				$('#dataTables-banner').DataTable().ajax.reload();
+
+			}else {
+				alert("lỗi quá trình xử lý ");
+			}
+		}
+		})
+	}
+})
+</script>
+	<script type="text/javascript">
+	 function readURL(input) {
+         if (input.files && input.files[0]) {
+             var reader = new FileReader();
+
+             reader.onload = function (e) {
+                 $('#blah')
+                     .attr('src', e.target.result);
+             };
+
+             reader.readAsDataURL(input.files[0]);
+         }
+     }
+	</script>
+	
